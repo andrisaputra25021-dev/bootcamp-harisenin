@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="to do list" />
+    <meta name="author" content="andri saputra" />
+    <meta name="theme-colour" content="#0330fc" />
+    <link rel="icon" href="assets/icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>To Do List | Manage Your Tasks</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="user-profil">
+          <a href="#"><i class="fa-solid fa-user"></i></a>
+          <p><strong>Andri Saputra</strong></p>
+          <p><i>Jobseeker</i></p>
+        </div>
+      </nav>
+    </header>
+
+    <p id="waktu-terkini"></p>
+
+    <form action="" id="form-tugas">
+      <h1>Buat Tugas</h1>
+      <input type="text" id="input-tugas" required />
+      <div class="input-option">
+        <input type="date" id="tanggal" required />
+        <select name="level" id="level" required>
+          <option value="">Prioritas</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+      </div>
+      <button type="submit"><strong>Tambahkan</strong></button>
+    </form>
+
+    <div class="daftar-kolom">
+      <div class="card-list">
+        <h2>Tugas Baru</h2>
+        <div class="empty-state">Tidak ada tugas.</div>
+        <ul id="daftar-tugas"></ul>
+        <button type="submit" id="hapus-daftarBaru" class="deleteAll" hidden>
+          <strong>Hapus Semua</strong>
+        </button>
+      </div>
+
+      <div class="card-list">
+        <h2>Tugas Selesai</h2>
+        <div class="empty-state">Tidak ada tugas.</div>
+        <ul id="daftar-selesai"></ul>
+        <button type="submit" id="hapus-daftarSelesai" class="deleteAll" hidden>
+          <strong>Hapus Semua</strong>
+        </button>
+      </div>
+
+      <div class="card-list">
+        <h2>Tugas Terlewat</h2>
+        <div class="empty-state">Tidak ada tugas.</div>
+        <ul id="daftar-terlewat"></ul>
+        <button
+          type="submit"
+          id="hapus-daftarTerlewat"
+          class="deleteAll"
+          hidden
+        >
+          <strong>Hapus Semua</strong>
+        </button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

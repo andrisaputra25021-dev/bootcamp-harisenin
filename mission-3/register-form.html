@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="video learning platform" />
+    <meta name="keywords" content="videobelajar" />
+    <meta name="author" content="andri-saputra" />
+    <meta name="theme-colour" content="#FFBD3A" />
+    <link
+      rel="icon"
+      href="assets/title-logo.png"
+      type="image/png"
+      sizes="31x31"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Videobelajar ID | Video Learning platform</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="#home" id="logo"
+          ><img src="assets/Logo.png" alt="videobelajar-logo"
+        /></a>
+      </nav>
+    </header>
+
+    <section>
+      <form action="">
+        <div class="form-title">
+          <h1>Pendaftaran Akun</h1>
+          <p>Yuk, daftarkan akunmu sekarang juga!</p>
+        </div>
+        <div class="form-input">
+          <label for="name">Nama Lengkap<span>*</span></label>
+          <input type="text" name="name" id="name" required />
+          <label for="email">Email<span>*</span></label>
+          <input type="email" name="email" id="email" required />
+          <label for="phone">No. HP<span>*</span></label>
+
+          <div class="country-phone">
+            <div class="country-code">
+              <img src="assets/flag-id.png" alt="ID" /><span>+62</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <input type="tel" name="phone" id="phone" required />
+          </div>
+          <label for="password">Kata Sandi<span>*</span></label>
+
+          <div class="password-field">
+            <input type="password" id="password" name="password" /><i
+              class="fa-solid fa-eye"
+            ></i>
+          </div>
+
+          <label for="password">konfirmasi Kata Sandi<span>*</span></label>
+
+          <div class="password-field">
+            <input type="password" id="password" name="password" /><i
+              class="fa-solid fa-eye"
+            ></i>
+          </div>
+
+          <a href="#" class="forget-password">Lupa Password?</a>
+
+          <div class="register-login-button">
+            <button id="button-sign-up">Daftar</button>
+            <button id="button-login">Masuk</button>
+            <p>atau</p>
+            <button id="button-sso-google">
+              <div class="google-icon">
+                <img src="assets/logos_google-icon.png" alt="google-icon" />
+              </div>
+              <span>Daftar dengan Google</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
