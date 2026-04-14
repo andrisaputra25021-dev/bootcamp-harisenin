@@ -26,6 +26,12 @@ function Navbar() {
         >
           Register
         </Link>
+        <Link
+          to="/admin"
+          className="px-4 py-2 bg-white-500 text-[#3ecf4c] rounded border border-[#3ecf4c] transition hover:scale-110"
+        >
+          Admin
+        </Link>
       </div>
 
       <button id="menu" className=" text-3xl md:hidden">
