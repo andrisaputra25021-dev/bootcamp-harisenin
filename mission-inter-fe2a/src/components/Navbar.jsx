@@ -28,7 +28,7 @@ function Navbar() {
         </Link>
         <Link
           to="/admin"
-          className="px-4 py-2 bg-white-500 text-[#3ecf4c] rounded border border-[#3ecf4c] transition hover:scale-110"
+          className="px-4 py-2 bg-[#ffbd3a] text-[#ffffff] font-bold rounded border border-[#ffbd3a] transition hover:scale-110"
         >
           Admin
         </Link>
