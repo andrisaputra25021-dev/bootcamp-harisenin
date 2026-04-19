@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/Logo.png";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function Admin({ cards, setCards }) {
   // state form
@@ -104,22 +105,12 @@ export default function Admin({ cards, setCards }) {
 
   return (
     <div className="min-h-screen bg-[#ffbd3a]">
-      <nav className="fixed top-0 w-full z-1000 h-20 bg-white border-b border-black/15 flex items-center justify-between px-6 md:px-12 lg:px-16">
-        <div className="">
-          <Link to="/">
-            <img src={Logo} alt="Logo" className="w-35 md:w-full" />
-          </Link>
-        </div>
-
-        <h1 className="text-[#ffbd3a] md:text-3xl">
-          <strong>Admin Panel</strong>
-        </h1>
-        <button id="menu" className=" text-[#ffbd3a] text-3xl md:hidden">
-          <i className="fa-solid fa-bars"></i>
-        </button>
-      </nav>
+      <Navbar />
 
       <main className="max-w-[1440px] mx-auto">
+        <h1 className="text-center text-white text-2xl md:text-5xl pt-4 md:pt-6">
+          <strong>Admin Panel</strong>
+        </h1>
         {/* form styling */}
         <div className="flex flex-col gap-6 p-4 md:flex-row md:gap-10 md:px-16 md:py-8">
           <div className="flex flex-col max-w-xl bg-white px-8 py-2 rounded-xl shadow-xl">
