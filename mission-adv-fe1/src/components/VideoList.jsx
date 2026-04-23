@@ -25,8 +25,8 @@ function VideoList({ cards }) {
 
       <div>
         <ul className="flex gap-6 py-2 overflow-x-auto md:overflow-visible whitespace-nowrap">
-          {categories.map((category, index) => (
-            <li key={index}>
+          {categories.map((category) => (
+            <li key={category}>
               <a className="text-gray-500 font-bold tracking-wide pb-2 border-b-3 border-transparent transition hover:text-[#f64920] hover:border-[#f64920] ">
                 {category}
               </a>
