@@ -35,9 +35,9 @@ const useCourses = () => {
   };
 
   //update card
-  const editCourse = async (id, updateCourse) => {
+  const editCourse = async (id, updatedCourse) => {
     try {
-      const data = await updateCourse(id, updateCourse);
+      const data = await updateCourse(id, updatedCourse);
       setCourses((prev) =>
         prev.map((course) => (course.id === id ? data : course)),
       );
