@@ -3,10 +3,15 @@ import Intro from "../components/Intro";
 import VideoList from "../components/VideoList";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
-import useCourses from "../hooks/useCourses";
+import useCourseStore from "../store/useCourseStore";
+import { useEffect } from "react";
 
 function Home() {
-  const { courses, loading, error } = useCourses();
+  const { courses, loading, error, fetchCourses } = useCourseStore();
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   return (
     <>

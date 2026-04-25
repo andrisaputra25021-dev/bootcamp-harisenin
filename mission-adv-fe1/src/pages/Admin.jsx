@@ -3,12 +3,24 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/Logo.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import useCourses from "../hooks/useCourses";
+import useCourseStore from "../store/useCourseStore";
+import { useEffect } from "react";
 
 export default function Admin() {
   // ambil data dari hooks
-  const { courses, loading, error, createCourse, editCourse, removeCourse } =
-    useCourses();
+  const {
+    courses,
+    loading,
+    error,
+    createCourse,
+    editCourse,
+    removeCourse,
+    fetchCourses,
+  } = useCourseStore();
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   // state form
   const [form, setForm] = useState({
