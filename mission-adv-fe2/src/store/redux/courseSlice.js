@@ -35,7 +35,13 @@ const courseSlice = createSlice({
   },
 });
 
-export const { setLoading, setCourses, addCourse, updateCourse, deleteCourse } =
-  courseSlice.actions;
+export const {
+  setLoading,
+  setCourses,
+  addCourse,
+  updateCourse,
+  deleteCourse,
+  setError,
+} = courseSlice.actions;
 
 export default courseSlice.reducer;

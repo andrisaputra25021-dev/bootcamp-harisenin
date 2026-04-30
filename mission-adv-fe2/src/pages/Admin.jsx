@@ -3,23 +3,40 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/Logo.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import useCourseStore from "../store/useCourseStore";
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setCourses,
+  setLoading,
+  setError,
+  addCourse,
+  updateCourse,
+  deleteCourse,
+} from "../store/redux/courseSlice";
+import {
+  getCourses,
+  addCourse as addCourseAPI,
+  updateCourse as updateCourseAPI,
+  deleteCourse as deleteCourseAPI,
+} from "../services/api/cardsAPI";
 
 export default function Admin() {
-  // ambil data dari hooks
-  const {
-    courses,
-    loading,
-    error,
-    createCourse,
-    editCourse,
-    removeCourse,
-    fetchCourses,
-  } = useCourseStore();
+  const dispatch = useDispatch();
+  const { courses, loading, error } = useSelector((state) => state.courses);
 
   useEffect(() => {
-    fetchCourses();
+    const fetchData = async () => {
+      dispatch(setLoading(true));
+      try {
+        const data = await getCourses();
+        dispatch(setCourses(data));
+        dispatch(setLoading(false));
+      } catch (err) {
+        dispatch(setError(err.message));
+        dispatch(setLoading(false));
+      }
+    };
+    fetchData();
   }, []);
 
   // state form
@@ -59,19 +76,34 @@ export default function Admin() {
       alert("Mohon Isi Data Penting!");
       return;
     }
-    await createCourse({ ...form, rating: 5 });
-    resetForm();
+    try {
+      const data = await addCourseAPI({ ...form, rating: 5 });
+      dispatch(addCourse(data));
+      resetForm();
+    } catch (err) {
+      dispatch(setError(err.message));
+    }
   };
 
   // update card
   const updateCard = async () => {
-    await editCourse(editingId, form);
-    resetForm();
+    try {
+      const data = await updateCourseAPI(editingId, form);
+      dispatch(updateCourse(data));
+      resetForm();
+    } catch (err) {
+      dispatch(setError(err.message));
+    }
   };
 
   // delete card
   const deleteCard = async (id) => {
-    await removeCourse(id);
+    try {
+      await deleteCourseAPI(id);
+      dispatch(deleteCourse(id));
+    } catch (err) {
+      dispatch(setError(err.message));
+    }
   };
 
   // edit card
@@ -202,7 +234,7 @@ export default function Admin() {
           <div className="bg-black/25 p-4 rounded-xl max-h-[550px] overflow-y-auto flex flex-col gap-4 w-full">
             {loading && <p className="text-white text-center">Loading...</p>}
             {error && <p className="text-red-500 text-center">{error}</p>}
-            {courses.map((card, index) => (
+            {(courses ?? []).map((card, index) => (
               <div
                 key={card.id ?? index}
                 className="bg-white p-2 md:p-4 rounded-xl shadow flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"

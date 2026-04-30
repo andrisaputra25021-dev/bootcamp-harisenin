@@ -5,12 +5,25 @@ import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import useCourseStore from "../store/useCourseStore";
 import { useEffect } from "react";
+import { getCourses } from "../services/api/cardsAPI";
+import { useSelector, useDispatch } from "react-redux";
+import { setCourses, setLoading, setError } from "../store/redux/courseSlice";
 
 function Home() {
-  const { courses, loading, error, fetchCourses } = useCourseStore();
+  const dispatch = useDispatch();
+  const { courses, loading, error } = useSelector((state) => state.courses);
 
   useEffect(() => {
-    fetchCourses();
+    const fetchData = async () => {
+      dispatch(setLoading(true));
+      try {
+        const data = await getCourses();
+        dispatch(setCourses(data));
+      } catch (err) {
+        dispatch(setError(err.message));
+      }
+    };
+    fetchData();
   }, []);
 
   return (
@@ -18,9 +31,7 @@ function Home() {
       <Navbar />
       <main className="max-w-[1440px] mx-auto">
         <Intro />
-        {loading && <p className="text-center py-10">Loading...</p>}
-        {error && <p className="text-center text-red-500">{error}</p>}
-        <VideoList cards={courses} />
+        <VideoList cards={courses ?? []} />
         <CTA />
         <Footer />
       </main>
